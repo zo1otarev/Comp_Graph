@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<HTML>
+		<BODY>
+			<canvas id='lesson01' width='1000' height='667'style="background: url('cosmos.webp')"/>
+			<script>
+				let canvas = document.getElementById("lesson01");
+				let context = canvas.getContext("2d");
+
+				var coef = 0.552;
+				function draw1() {
+					context.fillStyle = '#000000';
+					context.beginPath();
+					context.moveTo(100,300);
+					context.bezierCurveTo(100,200 + 100 * coef,100 + 50 * coef,200,150,200);
+					context.bezierCurveTo(150 + 50 * coef,200,200,200 + 100 * coef,200,300);
+					context.bezierCurveTo(200,300 + 100 * coef,150 + 50 * coef,400,150,400);
+					context.bezierCurveTo(100 + 50 * coef,400,100,300 + 100 * coef,100,300);
+
+					context.moveTo(700,300);
+					context.bezierCurveTo(700,200 + 100 * coef,700 + 50 * coef,200,750,200);
+					context.bezierCurveTo(750 + 50 * coef,200,800,200 + 100 * coef,800,300);
+					context.bezierCurveTo(800,300 + 100 * coef,750 + 50 * coef,400,750,400);
+					context.bezierCurveTo(700 + 50 * coef,400,700,300 + 100 * coef,700,300);
+					context.fill();
+				}
+				draw1();
+
+				var pos = 0;
+				function draw2() {
+					context.clearRect(150 + pos - 1,220,160,160);
+					if (pos < 51){
+						context.fillStyle = '#000000';
+						context.beginPath();
+						context.moveTo(100,300);
+						context.bezierCurveTo(100,200 + 100 * coef,100 + 50 * coef,200,150,200);
+						context.bezierCurveTo(150 + 50 * coef,200,200,200 + 100 * coef,200,300);
+						context.bezierCurveTo(200,300 + 100 * coef,150 + 50 * coef,400,150,400);
+						context.bezierCurveTo(100 + 50 * coef,400,100,300 + 100 * coef,100,300);
+						context.fill();
+					}
+					if (pos > 390){
+						context.fillStyle = '#000000';
+						context.beginPath();
+						context.moveTo(700,300);
+						context.bezierCurveTo(700,200 + 100 * coef,700 + 50 * coef,200,750,200);
+						context.bezierCurveTo(750 + 50 * coef,200,800,200 + 100 * coef,800,300);
+						context.bezierCurveTo(800,300 + 100 * coef,750 + 50 * coef,400,750,400);
+						context.bezierCurveTo(700 + 50 * coef,400,700,300 + 100 * coef,700,300);
+						context.fill();
+					}
+
+					if (pos >= 0 && pos < 600){
+						context.fillStyle = 'orange';
+						context.beginPath();
+						context.moveTo(230 + pos,300);
+						context.arc(230 + pos,300,80,Math.PI/6,11*Math.PI/6);
+						context.fill();
+					}
+
+					if (pos > 390){
+						context.clearRect(750,200,160,200);
+						context.fillStyle = '#000000';
+						context.beginPath();
+						context.moveTo(750,200);
+						context.bezierCurveTo(750 + 50 * coef,200,800,200 + 100 * coef,800,300);
+						context.bezierCurveTo(800,300 + 100 * coef,750 + 50 * coef,400,750,400);
+						context.fill();
+					}
+					pos++
+				}
+
+				setInterval(draw2, 20);
+
+			</script>
+		</BODY>
+</HTML>
